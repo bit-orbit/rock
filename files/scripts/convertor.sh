@@ -24,7 +24,7 @@ find "$SOURCE_DIR" -type f -print0 | while IFS= read -r -d $'\0' file; do
     output_file="$TARGET_DIR/$filename.opus"
 
     # Convert the file using ffmpeg WITH the igndts flag
-    ffmpeg -fflags +igndts -i "$file" -c:a libopus "$output_file"
+    ffmpeg -y -fflags +igndts -i "$file" -c:a libopus "$output_file"
 
     # Check if the conversion was successful
     if [ $? -eq 0 ]; then
